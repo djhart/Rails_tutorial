@@ -5,6 +5,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
   end
+  
 
   test "login with invalid information" do
     get login_path
@@ -39,6 +40,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
   
   test "login with remembering" do 
+    @user = users(:michael)
     log_in_as(@user, remember_me: '1')
     assert_equal cookies['remember_token'], assigns(:user).remember_token
   end
